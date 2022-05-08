@@ -73,9 +73,15 @@ model = build_model(
 #message, length = inference(get_features(example, tokenizer), model, tokenizer)
 #st.text(message)
 
-st.title("Summarize Text")
-sentence = st.text_area('Please paste your article :', height=30)
-button = st.button("Summarize")
+st.title("Generate Docstring")
+sentence = st.text_area('Please Write a Code here for which you want to generate a docstring :', height=30)
+button = st.button("Generate Docstring")
+
+with st.spinner("Generating Docstring"):
+    if button and sentence:
+        example = [Example(source = sentence, target = None)]
+        message, length = inference(get_features(example, tokenizer), model, tokenizer)
+        st.write(message)
 
 
                    
