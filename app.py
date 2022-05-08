@@ -80,7 +80,7 @@ with st.spinner("Generating Docstring"):
     if button and sentence:
         example = [Example(source = sentence, target = None)]
         message, length = inference(get_features(example, tokenizer), model, tokenizer)
-        st.write(message)
+        st.write(message[0])
 
 
                    
