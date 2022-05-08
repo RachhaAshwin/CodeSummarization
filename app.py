@@ -68,9 +68,18 @@ tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower
 model = build_model(
     model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
 
-code_example = "def convert(arr): return np.array(arr)"
-example = [Example(source=code_example, target=None)]
-message, length = inference(get_features(example, tokenizer), model, tokenizer)
-st.text(message)
+#code_example = "def convert(arr): return np.array(arr)"
+#example = [Example(source=code_example, target=None)]
+#message, length = inference(get_features(example, tokenizer), model, tokenizer)
+#st.text(message)
+
+st.set_page_config(page_title = 'Code Summarization Application', 
+                   page_icon = 'https://endlessicons.com/wp-content/uploads/2012/12/fountain-pen-icon-614x460.png',
+                   layout = 'wide')
+
+input_code = st.text_area("Input Code Here")
+                   
+                   
+
 st.text('Author : Ashwin Rachha')
 st.text('Author : Anudeep Reddy')
