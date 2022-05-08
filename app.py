@@ -68,8 +68,8 @@ config = RobertaConfig.from_pretrained('microsoft/codebert-base')
 tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
 
 @st.cache(allow_output_mutation=True)
-def load_model():
-    return model = build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
+def load_model:
+    return build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
 model = load_model()
 
 st.title("Generate Docstring")
