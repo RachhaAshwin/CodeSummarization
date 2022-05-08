@@ -63,5 +63,10 @@ def build_model(model_class, config, tokenizer):
     )
     return model
   
+config = RobertaConfig.from_pretrained('microsoft/codebert-base')
+tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
+model = build_model(
+    model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
+
 st.text('Author : Ashwin Rachha')
 st.text('Author : Anudeep Reddy')
