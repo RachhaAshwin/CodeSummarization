@@ -77,7 +77,7 @@ st.set_page_config(page_title = 'Code Summarization Application',
                    page_icon = 'https://endlessicons.com/wp-content/uploads/2012/12/fountain-pen-icon-614x460.png',
                    layout = 'wide')
 
-input_code = st.text_area("Input Code Here")
+
                    
                    
 
