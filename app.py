@@ -73,9 +73,9 @@ model = build_model(
 #message, length = inference(get_features(example, tokenizer), model, tokenizer)
 #st.text(message)
 
-st.set_page_config(page_title = 'Code Summarization Application', 
-                   page_icon = 'https://endlessicons.com/wp-content/uploads/2012/12/fountain-pen-icon-614x460.png',
-                   layout = 'wide')
+st.title("Summarize Text")
+sentence = st.text_area('Please paste your article :', height=30)
+button = st.button("Summarize")
 
 
                    
