@@ -62,7 +62,8 @@ def build_model(model_class, config, tokenizer):
         strict=False,
     )
     return model
-  
+
+@st.cache
 config = RobertaConfig.from_pretrained('microsoft/codebert-base')
 tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
 model = build_model(
