@@ -63,16 +63,13 @@ def build_model(model_class, config, tokenizer):
     )
     return model
 
-@st.cache
+
 config = RobertaConfig.from_pretrained('microsoft/codebert-base')
 tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
-model = build_model(
-    model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
-
-#code_example = "def convert(arr): return np.array(arr)"
-#example = [Example(source=code_example, target=None)]
-#message, length = inference(get_features(example, tokenizer), model, tokenizer)
-#st.text(message)
+@st.cache
+def load_model:
+    return model = build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
+model = load_model()
 
 st.title("Generate Docstring")
 sentence = st.text_area('Please Write a Code here for which you want to generate a docstring :', height=30)
