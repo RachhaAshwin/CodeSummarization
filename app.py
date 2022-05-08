@@ -68,5 +68,9 @@ tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower
 model = build_model(
     model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
 
+code_example = "def convert(arr): return np.array(arr)"
+example = [Example(source=code_example, target=None)]
+message, length = inference(get_features(example, tokenizer), model, tokenizer)
+st.text(message)
 st.text('Author : Ashwin Rachha')
 st.text('Author : Anudeep Reddy')
