@@ -63,11 +63,12 @@ def build_model(model_class, config, tokenizer):
     )
     return model
 
-
+@st.cache(allow_output_mutation = True)
 config = RobertaConfig.from_pretrained('microsoft/codebert-base')
+@st.cache(allow_output_mutation = True)
 tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
 
-
+@st.cache(allow_output_mutation = True)
 def load_model():
     return build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
 model = load_model()
@@ -80,7 +81,7 @@ with st.spinner("Generating Docstring"):
     if button and sentence:
         example = [Example(source = sentence, target = None)]
         message, length = inference(get_features(example, tokenizer), model, tokenizer)
-        st.write(example)
+        st.write(sentence)
         st.write(message[0])
 
 
