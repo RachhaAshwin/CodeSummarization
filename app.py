@@ -66,7 +66,7 @@ def build_model(model_class, config, tokenizer):
 config = RobertaConfig.from_pretrained('microsoft/codebert-base')
 tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
 
-@st.cache(hash_funcs={torch.nn.parameter.Parameter: lambda _: None})
+@st.cache(hash_funcs={torch.nn.parameter.Parameter: lambda parameter: parameter.data.numpy()})
 def load_model():
     return build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
 model = load_model()
