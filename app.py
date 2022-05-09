@@ -85,5 +85,4 @@ with st.spinner("Generating Docstring"):
                    
                    
 
-st.text('Author : Ashwin Rachha')
-st.text('Author : Anudeep Reddy')
+
