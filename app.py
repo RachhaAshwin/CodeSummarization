@@ -63,7 +63,7 @@ def build_model(model_class, config, tokenizer):
     )
     return model
 
-@st.cache(allow_output_mutation = True)
+@st.cache(hash_funcs={tokenizers.AddedToken: my_hash_func})
 def load_model():
     config = RobertaConfig.from_pretrained('microsoft/codebert-base')
     tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
