@@ -62,13 +62,13 @@ def build_model(model_class, config, tokenizer):
         strict=False,
     )
     return model
-
-@st.cache
-def load_model():
-    config = RobertaConfig.from_pretrained('microsoft/codebert-base')
-    tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
-    return tokenizer, build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
-tokenizer, model = load_model()
+ 
+config = RobertaConfig.from_pretrained('microsoft/codebert-base')
+tokenizer = RobertaTokenizer.from_pretrained("microsoft/codebert-base", do_lower_case  = False)
+  
+def load_model():   
+    return build_model( model_class = RobertaModel, config = config, tokenizer = tokenizer).to('cpu')
+model = load_model()
 
 st.title("Generate Docstring")
 sentence = st.text_area('Please Write a Code here for which you want to generate a docstring :', height=30)
